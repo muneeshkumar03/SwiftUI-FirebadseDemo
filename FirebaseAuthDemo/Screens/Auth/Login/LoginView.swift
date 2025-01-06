@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var emailOrPhone: String = ""
-    @State private var password: String = ""
     @State private var isNavigationg: Bool  = false
     @State private var path: [String] = []
     @ObservedObject var authViewModel: AuthViewModel
     @StateObject var loginViewModel: LoginViewModel
+    @State private var isShowingAlert: Bool = false
+    @State private var isLoginButtonTapped: Bool = false
     
     private var imageView: some View {
         Image("login_image")
             .resizable()
             .scaledToFit()
     }
-    
+   
     private var title: some View {
         VStack {
             Text("Let's Connect With US!")
@@ -33,24 +33,37 @@ struct LoginView: View {
     
     private var textFields: some View {
         VStack {
-            InputView(text: $emailOrPhone, placeholder: "Email or Phone Number")
-            InputView(text: $password, placeholder: "Password", isSecureField: true)
+            InputView(text: $loginViewModel.email, placeholder: "Email or Phone Number")
+            InputView(text: $loginViewModel.password, placeholder: "Password", isSecureField: true)
         }
     }
     
     private var loginButton: some View {
         Button {
-            // Perform action here
+            isLoginButtonTapped = true
             loginViewModel.checkValidation()
-            if loginViewModel.email.isEmpty && loginViewModel.password.isEmpty {
+            isShowingAlert = isLoginButtonTapped && (loginViewModel.email.isEmpty || loginViewModel.password.isEmpty)
+            
+            if !isShowingAlert {
                 Task {
-                    await authViewModel.loginUser(email: emailOrPhone, password: password)
+                    await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
                 }
             }
         } label: {
             Text("Login")
         }
         .buttonStyle(CapsuleButtonStyle())
+        .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
+    }
+    
+    private func getErrorMessage() -> String {
+        if !(loginViewModel.emailError?.isEmpty ?? false) {
+            return loginViewModel.emailError ?? ""
+        }
+        if !(loginViewModel.passwordError?.isEmpty ?? false) {
+            return loginViewModel.passwordError ?? ""
+        }
+        return ""
     }
     
     private var forgotPasswordButton: some View {
@@ -132,6 +145,7 @@ struct LoginView: View {
             .ignoresSafeArea()
             .padding(.horizontal)
         }
+        
     }
 }
 

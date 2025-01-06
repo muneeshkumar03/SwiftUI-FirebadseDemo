@@ -1,5 +1,5 @@
 //
-//  LiginViewModel.swift
+//  LoginViewModel.swift
 //  FirebaseAuthDemo
 //
 //  Created by Encora on 04/01/25.

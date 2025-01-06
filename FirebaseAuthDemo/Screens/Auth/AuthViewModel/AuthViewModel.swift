@@ -16,6 +16,8 @@ class AuthViewModel: ObservableObject {
     let firebaseStore: Firestore = Firestore.firestore()
     @Published var userSession: FirebaseAuth.User? // firebase's user
     @Published var currentUser: User? // app's current user
+    @Published var isError: Bool = false
+    @Published var errorMessage: NetworkError?
     
     func createUser(email: String, password: String, fullName: String) async {
         do {
@@ -42,6 +44,8 @@ class AuthViewModel: ObservableObject {
             await fetchuser(uId: user.user.uid)
             print("User logged in: \(user.user.uid)")
         } catch {
+            isError = true
+            errorMessage = NetworkError.apiError(error.localizedDescription)
             print("Error logging in user: \(error)")
         }
     }
@@ -54,5 +58,17 @@ class AuthViewModel: ObservableObject {
             debugPrint("error \(error)")
         }
         
+    }
+}
+
+
+enum NetworkError: LocalizedError {
+    case apiError(String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .apiError(let apiError):
+            return apiError
+        }
     }
 }

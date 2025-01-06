@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var isNavigationg: Bool  = false
     @State private var path: [String] = []
-    @ObservedObject var authViewModel: AuthViewModel
+    @StateObject var authViewModel: AuthViewModel
     @StateObject var loginViewModel: LoginViewModel
     @State private var isShowingAlert: Bool = false
     @State private var isLoginButtonTapped: Bool = false
@@ -54,6 +54,7 @@ struct LoginView: View {
         }
         .buttonStyle(CapsuleButtonStyle())
         .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
+        .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
     }
     
     private func getErrorMessage() -> String {

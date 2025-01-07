@@ -39,22 +39,34 @@ struct LoginView: View {
     }
     
     private var loginButton: some View {
-        Button {
-            isLoginButtonTapped = true
-            loginViewModel.checkValidation()
-            isShowingAlert = isLoginButtonTapped && (loginViewModel.email.isEmpty || loginViewModel.password.isEmpty)
-            
-            if !isShowingAlert {
-                Task {
-                    await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
+        NavigationStack(path: $path) {
+            Button {
+                isLoginButtonTapped = true
+                loginViewModel.checkValidation()
+                isShowingAlert = isLoginButtonTapped && (loginViewModel.email.isEmpty || loginViewModel.password.isEmpty)
+                
+                if !isShowingAlert {
+                    Task {
+                        await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
+                        if !authViewModel.isError {
+                            debugPrint("User successfully logged in")
+                            path.append("ProfileView")
+                        }
+                    }
+                }
+            } label: {
+                Text("Login")
+            }
+            .buttonStyle(CapsuleButtonStyle())
+            .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
+            .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
+            .navigationDestination(for: String.self) { destination in
+                if destination == "ProfileView" {
+                    ProfileView()
                 }
             }
-        } label: {
-            Text("Login")
+            
         }
-        .buttonStyle(CapsuleButtonStyle())
-        .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
-        .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
     }
     
     private func getErrorMessage() -> String {

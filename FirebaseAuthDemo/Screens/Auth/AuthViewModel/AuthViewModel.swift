@@ -59,6 +59,17 @@ class AuthViewModel: ObservableObject {
         }
         
     }
+    
+    func resetPassword(email: String) async  {
+        do {
+            try await auth.sendPasswordReset(withEmail: email)
+            print("Password reset email sent")
+        } catch {
+            isError = true
+            errorMessage = NetworkError.apiError(error.localizedDescription)
+            print("Error sending password reset email: \(error)")
+        }
+    }
 }
 
 

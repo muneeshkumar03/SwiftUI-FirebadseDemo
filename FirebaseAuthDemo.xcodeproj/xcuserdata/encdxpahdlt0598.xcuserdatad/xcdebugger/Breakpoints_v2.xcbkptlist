@@ -7,213 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17AD7A51-92EC-4C4A-9784-8D95B5260A69"
+            uuid = "FBC3A34C-DA5C-4D8E-BF37-29F9637B2469"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "loginUser(email:password:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "resetPassword(email:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0608593B-395D-406E-BC9A-C93C02B25D5D"
+            uuid = "D407CC9E-13BF-448C-BB8F-621963CC94D8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "fetchuser(uId:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "resetPassword(email:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0608593B-395D-406E-BC9A-C93C02B25D5D - 71660e86358bc6fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59">
-               </Location>
-               <Location
-                  uuid = "0608593B-395D-406E-BC9A-C93C02B25D5D - 2454a239699f24ff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "86BECB50-13CC-4176-9AAC-E06F87118A6E"
+            uuid = "1BA5E72A-23B5-4B8D-AC22-AAD744C78E66"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "fetchuser(uId:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "86BECB50-13CC-4176-9AAC-E06F87118A6E - 2acca04f7da38d07"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-               <Location
-                  uuid = "86BECB50-13CC-4176-9AAC-E06F87118A6E - 1d35ab99bf6dbb36"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-               <Location
-                  uuid = "86BECB50-13CC-4176-9AAC-E06F87118A6E - 71660e86358bc919"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-               <Location
-                  uuid = "86BECB50-13CC-4176-9AAC-E06F87118A6E - 2454a239699f2b18"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for FirebaseAuthDemo.AuthViewModel.fetchuser(uId: Swift.String) async -&gt; ()"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/AuthViewModel/AuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2824EFC6-1108-42E5-A84E-448937A9D087"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirebaseAuthDemo/Screens/Auth/Login/LoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "loginButton"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "45C43BC7-55F2-4E9A-BAC7-FF2EF59FCE70"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirebaseAuthDemo/Screens/Auth/Login/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "loginButton"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "45C43BC7-55F2-4E9A-BAC7-FF2EF59FCE70 - ba547de289c3209f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in FirebaseAuthDemo.LoginView.loginButton.getter : some"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/Login/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "45C43BC7-55F2-4E9A-BAC7-FF2EF59FCE70 - c490361e4f18ecef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in FirebaseAuthDemo.LoginView.loginButton.getter : some"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/Login/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "45C43BC7-55F2-4E9A-BAC7-FF2EF59FCE70 - 2bf490c9a577465"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in FirebaseAuthDemo.LoginView.loginButton.getter : some"
-                  moduleName = "FirebaseAuthDemo.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/encdxpahdlt0598/SwiftUI-FirebadseDemo/FirebaseAuthDemo/Screens/Auth/Login/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-            </Locations>
+            landmarkName = "loginUser(email:password:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

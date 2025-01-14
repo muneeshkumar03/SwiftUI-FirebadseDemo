@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var isNavigationg: Bool  = false
-    @State private var path: [String] = []
-    @StateObject var authViewModel: AuthViewModel
+  //  @State private var path: [String] = []
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var router : Router
     @StateObject var loginViewModel: LoginViewModel
     @State private var isShowingAlert: Bool = false
     @State private var isLoginButtonTapped: Bool = false
@@ -20,7 +21,7 @@ struct LoginView: View {
             .resizable()
             .scaledToFit()
     }
-   
+    
     private var title: some View {
         VStack {
             Text("Let's Connect With US!")
@@ -39,34 +40,27 @@ struct LoginView: View {
     }
     
     private var loginButton: some View {
-        NavigationStack(path: $path) {
-            Button {
-                isLoginButtonTapped = true
-                loginViewModel.checkValidation()
-                isShowingAlert = isLoginButtonTapped && (loginViewModel.email.isEmpty || loginViewModel.password.isEmpty)
-                
-                if !isShowingAlert {
-                    Task {
-                        await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
-                        if !authViewModel.isError {
-                            debugPrint("User successfully logged in")
-                            path.append("ProfileView")
-                        }
+        Button {
+            isLoginButtonTapped = true
+            loginViewModel.checkValidation()
+            isShowingAlert = isLoginButtonTapped && (loginViewModel.email.isEmpty || loginViewModel.password.isEmpty)
+            
+            if !isShowingAlert {
+                Task {
+                    await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
+                    if !authViewModel.isError {
+                        debugPrint("User successfully logged in")
+                      //  path.append("ProfileView")
+                       // router.navigateTo(destination: .profile)
                     }
                 }
-            } label: {
-                Text("Login")
             }
-            .buttonStyle(CapsuleButtonStyle())
-            .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
-            .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
-            .navigationDestination(for: String.self) { destination in
-                if destination == "ProfileView" {
-                    ProfileView()
-                }
-            }
-            
+        } label: {
+            Text("Login")
         }
+        .buttonStyle(CapsuleButtonStyle())
+        .alert(getErrorMessage(), isPresented: $isShowingAlert, actions: { })
+        .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
     }
     
     private func getErrorMessage() -> String {
@@ -80,63 +74,58 @@ struct LoginView: View {
     }
     
     private var forgotPasswordButton: some View {
-        NavigationStack(path: $path) {
-            HStack {
-                Spacer()
-                Button(action: {
-                    debugPrint("Forgot Password button tapped")
-                    path.append("ForgotPassword")
-                }) {
-                    Text("Forgot Password?")
-                        .foregroundColor(.gray)
-                }
-            }
-            .navigationDestination(for: String.self) { destination in
-                if destination == "ForgotPassword" {
-                    ResetPasswordView()
-                }
+        HStack {
+            Spacer()
+            Button(action: {
+                router.navigateTo(destination: .forgotPassword)
+                debugPrint("Forgot Password button tapped")
+               // path.append("ForgotPassword")
+            }) {
+                Text("Forgot Password?")
+                    .foregroundColor(.gray)
             }
         }
     }
     
     private var bottomButtons: some View {
-            VStack(spacing: 16) {
-                // LabelledDiveder
-                LabelledDivider(label: "Or")
-                
-                Button {
-                    // Perform action here
-                } label: {
-                    Label("Sign up with Apple", systemImage: "apple.logo")
+        VStack(spacing: 16) {
+            // LabelledDiveder
+            LabelledDivider(label: "Or")
+            
+            Button {
+                // Perform action here
+            } label: {
+                Label("Sign up with Apple", systemImage: "apple.logo")
+            }
+            .buttonStyle(CapsuleButtonStyle(bgColor: .black))
+            
+            Button {
+                // Perform action here
+            } label: {
+                HStack {
+                    Image("google")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                    Text("Sign up with Google")
                 }
-                .buttonStyle(CapsuleButtonStyle(bgColor: .black))
-                
-                Button {
-                    // Perform action here
-                } label: {
-                    HStack {
-                        Image("google")
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                        Text("Sign up with Google")
-                    }
-                }
-                .buttonStyle(CapsuleButtonStyle(bgColor: .white, textColor: .black, hasBorder: true))
-                
-                
+            }
+            .buttonStyle(CapsuleButtonStyle(bgColor: .white, textColor: .black, hasBorder: true))
+            
+            Button {
+                router.navigateTo(destination: .creteAccount)
+            } label: {
                 HStack {
                     Text("Don't have an account?")
-                        .font(.title2)
-                    NavigationLink(destination: SignUpView()) {
-                        Text("Sign Up")
-                            .font(.title2)
-                            .foregroundStyle(.teal)
-                    }
+                        .foregroundStyle(.black)
+                    Text("Sign Up")
+                        .foregroundStyle(.teal)
                 }
+                .fontWeight(.medium)
+            }
         }
     }
     var body: some View {
-        NavigationStack {
+       // NavigationStack(path: $path) {
             ScrollView {
                 VStack(spacing: 16) {
                     // ImageView
@@ -157,11 +146,21 @@ struct LoginView: View {
             }
             .ignoresSafeArea()
             .padding(.horizontal)
+       // }
+        /*
+        .navigationDestination(for: String.self) { destination in
+            if destination == "ProfileView" {
+                ProfileView()
+                    .environmentObject(authViewModel)
+            }
+            if destination == "ForgotPassword" {
+                ResetPasswordView()
+            }
         }
-        
+        */
     }
 }
 
 #Preview {
-    LoginView(authViewModel: AuthViewModel(), loginViewModel: LoginViewModel())
+    LoginView(loginViewModel: LoginViewModel())
 }

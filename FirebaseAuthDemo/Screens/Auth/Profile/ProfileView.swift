@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var router: Router
+
     var body: some View {
         List {
             Section {
                 HStack {
-                    Text("MK")
+                    Text(Utility.getInitials(from: authViewModel.currentUser?.fullName ?? ""))
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundStyle(.white)
@@ -20,10 +23,10 @@ struct ProfileView: View {
                         .background(Color(.lightGray))
                         .clipShape(Circle())
                     VStack(alignment: .leading) {
-                        Text("Muneeesh Kumar")
+                        Text(authViewModel.currentUser?.fullName ?? "")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                        Text("muneeshlkumar03@gmail.com")
+                        Text(authViewModel.currentUser?.email ?? "")
                             .font(.footnote)
                     }
                 }
@@ -31,7 +34,9 @@ struct ProfileView: View {
             
             Section("Account") {
                 Button {
-                    
+                    Task {
+                        await authViewModel.signOutUser()
+                    }
                 } label: {
                     Label {
                         Text("Sign Out")
@@ -44,7 +49,9 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    
+                    Task {
+                        await authViewModel.deleteUser()
+                    }
                 } label: {
                     Label {
                         Text("Delete Account")

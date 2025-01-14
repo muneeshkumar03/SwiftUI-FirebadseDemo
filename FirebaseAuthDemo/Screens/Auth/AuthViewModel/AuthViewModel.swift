@@ -70,6 +70,32 @@ class AuthViewModel: ObservableObject {
             print("Error sending password reset email: \(error)")
         }
     }
+    
+    func signOutUser() async {
+        do {
+            try auth.signOut()
+            userSession = nil
+            currentUser = nil
+            print("User signed out")
+        } catch {
+            isError = true
+            errorMessage = NetworkError.apiError(error.localizedDescription)
+            print("Error signing out user: \(error)")
+        }
+    }
+    
+    func deleteUser() async {
+        do {
+            try await auth.currentUser?.delete()
+            userSession = nil
+            currentUser = nil
+            print("User deleted")
+        } catch {
+            isError = true
+            errorMessage = NetworkError.apiError(error.localizedDescription)
+            print("Error deleting user: \(error)")
+        }
+    }
 }
 
 

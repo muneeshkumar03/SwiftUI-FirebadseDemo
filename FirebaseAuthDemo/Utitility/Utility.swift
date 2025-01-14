@@ -2,7 +2,7 @@
 //  Utility.swift
 //  FirebaseAuthDemo
 //
-//  Created by Encora on 07/01/25.
+//  Created by Muneesh Kumar on 07/01/25.
 //
 
 import Foundation

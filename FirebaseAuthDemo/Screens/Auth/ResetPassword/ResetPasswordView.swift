@@ -2,7 +2,7 @@
 //  ResetPasswordView.swift
 //  FirebaseAuthDemo
 //
-//  Created by Encora on 04/01/25.
+//  Created by Muneesh Kumar on 04/01/25.
 //
 
 import Foundation
@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ResetPasswordView: View {
 
-    @StateObject private var authViewModel: AuthViewModel = AuthViewModel()
+    @EnvironmentObject private var authViewModel: AuthViewModel
+    @EnvironmentObject private var router: Router
     @StateObject private var resetPasswordViewModel: ResetPasswordViewModel = ResetPasswordViewModel()
     @State private var showAlert: Bool = false
     public var body: some View {
@@ -39,6 +40,11 @@ struct ResetPasswordView: View {
             .buttonStyle(CapsuleButtonStyle())
             .alert(resetPasswordViewModel.emailErrorMessage ?? "", isPresented: $showAlert, actions: { })
             .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
+            .alert("Instructions Sent to your email", isPresented: $authViewModel.isSuccess) {
+                Button("Okay", role: .none) {
+                    router.navigateBack()
+                }
+            }
             Spacer()
         }
         .padding()

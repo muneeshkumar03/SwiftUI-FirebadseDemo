@@ -2,14 +2,13 @@
 //  ContentView.swift
 //  FirebaseAuth
 //
-//  Created by Encora on 07/12/24.
+//  Created by Muneesh Kumar on 07/12/24.
 //
 
 import SwiftUI
 
 struct LoginView: View {
     @State private var isNavigationg: Bool  = false
-  //  @State private var path: [String] = []
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var router : Router
     @StateObject var loginViewModel: LoginViewModel
@@ -34,7 +33,7 @@ struct LoginView: View {
     
     private var textFields: some View {
         VStack {
-            InputView(text: $loginViewModel.email, placeholder: "Email or Phone Number")
+            InputView(text: $loginViewModel.email, placeholder: "EmailId")
             InputView(text: $loginViewModel.password, placeholder: "Password", isSecureField: true)
         }
     }
@@ -50,8 +49,6 @@ struct LoginView: View {
                     await authViewModel.loginUser(email: loginViewModel.email, password: loginViewModel.password)
                     if !authViewModel.isError {
                         debugPrint("User successfully logged in")
-                      //  path.append("ProfileView")
-                       // router.navigateTo(destination: .profile)
                     }
                 }
             }
@@ -79,7 +76,6 @@ struct LoginView: View {
             Button(action: {
                 router.navigateTo(destination: .forgotPassword)
                 debugPrint("Forgot Password button tapped")
-               // path.append("ForgotPassword")
             }) {
                 Text("Forgot Password?")
                     .foregroundColor(.gray)
@@ -125,39 +121,26 @@ struct LoginView: View {
         }
     }
     var body: some View {
-       // NavigationStack(path: $path) {
-            ScrollView {
-                VStack(spacing: 16) {
-                    // ImageView
-                    imageView
-                    // Title
-                    title
-                    // TextFields
-                    textFields
-                    // Forgot Passport Button
-                    forgotPasswordButton
-                    // Login Button
-                    loginButton
-                    //Spacer
-                    Spacer()
-                    // Bottom Buttons
-                    bottomButtons
-                }
-            }
-            .ignoresSafeArea()
-            .padding(.horizontal)
-       // }
-        /*
-        .navigationDestination(for: String.self) { destination in
-            if destination == "ProfileView" {
-                ProfileView()
-                    .environmentObject(authViewModel)
-            }
-            if destination == "ForgotPassword" {
-                ResetPasswordView()
+        ScrollView {
+            VStack(spacing: 16) {
+                // ImageView
+                imageView
+                // Title
+                title
+                // TextFields
+                textFields
+                // Forgot Passport Button
+                forgotPasswordButton
+                // Login Button
+                loginButton
+                //Spacer
+                Spacer()
+                // Bottom Buttons
+                bottomButtons
             }
         }
-        */
+        .ignoresSafeArea()
+        .padding(.horizontal)
     }
 }
 

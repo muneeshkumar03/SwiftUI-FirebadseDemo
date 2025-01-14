@@ -2,7 +2,7 @@
 //  ResetPasswordViewModel.swift
 //  FirebaseAuthDemo
 //
-//  Created by Encora on 06/01/25.
+//  Created by Muneesh Kumar on 06/01/25.
 //
 
 import Foundation

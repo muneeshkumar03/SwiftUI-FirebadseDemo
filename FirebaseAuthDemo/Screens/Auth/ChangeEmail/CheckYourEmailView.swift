@@ -2,14 +2,13 @@
 //  CheckYourEmailView.swift
 //  FirebaseAuthYoutube
 //
-//  Created by Encora on 05/01/25.
+//  Created by Muneesh Kumar on 05/01/25.
 //
 
 import SwiftUI
 
 struct CheckYourEmailView: View {
     var body: some View {
-      //  NavigationStack {
             VStack(alignment: .leading) {
                 Spacer()
                 Image(systemName: "envelope.fill")
@@ -42,7 +41,6 @@ struct CheckYourEmailView: View {
                         print("Gasture called")
                     }
             }
-      //  }
         .padding()
         .toolbarRole(.editor)
     }

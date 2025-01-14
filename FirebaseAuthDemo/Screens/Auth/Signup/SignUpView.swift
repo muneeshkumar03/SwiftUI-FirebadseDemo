@@ -2,17 +2,18 @@
 //  SignUp.swift
 //  FirebaseAuth
 //
-//  Created by Encora on 07/12/24.
+//  Created by Muneesh Kumar on 07/12/24.
 //
 
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var emailOrPhoneNumber: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var fullName: String = ""
-    let authViewModel = AuthViewModel()
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 16) {
@@ -21,7 +22,7 @@ struct SignUpView: View {
                 .multilineTextAlignment(.center)
             Spacer()
                 .frame(height: 16)
-            InputView(text: $emailOrPhoneNumber, placeholder: "Email or Phone Number")
+            InputView(text: $email, placeholder: "Email Id")
             InputView(text: $password, placeholder: "Password", isSecureField: true)
             
             // confirm password with validation logic
@@ -41,7 +42,7 @@ struct SignUpView: View {
             
             Button {
                 Task {
-                    await authViewModel.createUser(email: emailOrPhoneNumber, password: password, fullName: fullName)
+                    await authViewModel.createUser(email: email, password: password, fullName: fullName)
                 }
             } label: {
                 Text("Create Account")
@@ -53,6 +54,13 @@ struct SignUpView: View {
         .navigationTitle("set up your account")
         .toolbarRole(.editor)
         .padding()
+        .alert("User created. Please log in.", isPresented: $authViewModel.isSuccess) {
+            Button("Okay", role: .none) {
+                router.navigateBack()
+            }
+        }
+        
+       
     }
 
 }

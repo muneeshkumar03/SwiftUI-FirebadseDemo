@@ -2,7 +2,7 @@
 //  AuthViewModel.swift
 //  FirebaseAuth
 //
-//  Created by Encora on 11/12/24.
+//  Created by Muneesh Kumar on 11/12/24.
 //
 
 import Foundation
@@ -17,6 +17,7 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User? // firebase's user
     @Published var currentUser: User? // app's current user
     @Published var isError: Bool = false
+    @Published var isSuccess: Bool = false
     @Published var errorMessage: NetworkError?
     
     func createUser(email: String, password: String, fullName: String) async {
@@ -26,14 +27,17 @@ class AuthViewModel: ObservableObject {
             await saveUser(userData)
         } catch {
             print("Error creating user: \(error)")
+            isError = true
         }
     }
     
     private func saveUser(_ user: User) async {
         do {
             try firebaseStore.collection("users").document(user.uid).setData(from: user)
+            isSuccess = true
         } catch {
             print("Error saving user: \(error)")
+            isError = true
         }
     }
     
@@ -64,6 +68,7 @@ class AuthViewModel: ObservableObject {
         do {
             try await auth.sendPasswordReset(withEmail: email)
             print("Password reset email sent")
+            isSuccess = true
         } catch {
             isError = true
             errorMessage = NetworkError.apiError(error.localizedDescription)

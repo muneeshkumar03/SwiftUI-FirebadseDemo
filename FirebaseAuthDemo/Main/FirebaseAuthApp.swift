@@ -2,7 +2,7 @@
 //  FirebaseAuthApp.swift
 //  FirebaseAuth
 //
-//  Created by Encora on 07/12/24.
+//  Created by Muneesh Kumar on 07/12/24.
 //
 
 import SwiftUI

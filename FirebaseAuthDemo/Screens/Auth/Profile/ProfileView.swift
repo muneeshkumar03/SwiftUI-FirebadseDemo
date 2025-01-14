@@ -2,7 +2,7 @@
 //  ProfileView.swift
 //  FirebaseAuthDemo
 //
-//  Created by Encora on 20/12/24.
+//  Created by Muneesh Kumar on 20/12/24.
 //
 
 import SwiftUI

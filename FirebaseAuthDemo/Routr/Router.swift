@@ -2,7 +2,7 @@
 //  Router.swift
 //  FirebaseAuthDemo
 //
-//  Created by Encora on 13/01/25.
+//  Created by Muneesh Kumar on 13/01/25.
 //
 
 import SwiftUI

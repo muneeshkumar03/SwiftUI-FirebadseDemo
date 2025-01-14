@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CheckYourEmailView: View {
+    @EnvironmentObject var router: Router
+    
     var body: some View {
             VStack(alignment: .leading) {
                 Spacer()
@@ -28,7 +30,7 @@ struct CheckYourEmailView: View {
                 Text("We have sent a password instructions to your email.")
                     .padding(.bottom, 30)
                 Button {
-                    
+                    router.navigateBack()
                 } label: {
                     Text("Skip, I'll confirm later")
                 }
@@ -39,6 +41,7 @@ struct CheckYourEmailView: View {
                 Text(getAttributedText())
                     .onTapGesture {
                         print("Gasture called")
+                        router.navigateToRoot()
                     }
             }
         .padding()

@@ -33,6 +33,9 @@ struct ResetPasswordView: View {
                     Task {
                         await authViewModel.resetPassword(email: resetPasswordViewModel.email)
                     }
+                    if authViewModel.isSuccess {
+                        router.navigateTo(destination: .emailSent)
+                    }
                 }
             } label: {
                 Text("Send Instructions")
@@ -40,11 +43,6 @@ struct ResetPasswordView: View {
             .buttonStyle(CapsuleButtonStyle())
             .alert(resetPasswordViewModel.emailErrorMessage ?? "", isPresented: $showAlert, actions: { })
             .alert(isPresented: $authViewModel.isError, error: authViewModel.errorMessage, actions: { })
-            .alert("Instructions Sent to your email", isPresented: $authViewModel.isSuccess) {
-                Button("Okay", role: .none) {
-                    router.navigateBack()
-                }
-            }
             Spacer()
         }
         .padding()
